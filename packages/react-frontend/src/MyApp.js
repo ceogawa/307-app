@@ -8,13 +8,14 @@ function MyApp() {
   const [characters, setCharacters] = useState([]);
 
   return (
+
     <div className="container">
-      <Table
-        characterData={characters}
-        removeCharacter={removeOneCharacter}
-      />
-      <Form />
-    </div>
+    <Table
+      characterData={characters}
+      removeCharacter={removeOneCharacter}
+    />
+    <Form handleSubmit={updateList} />
+  </div>
   );
 
   function removeOneCharacter(index) {
@@ -22,6 +23,11 @@ function MyApp() {
       return i !== index;
     });
     setCharacters(updated);
+  }
+
+  function updateList(person) {
+    setCharacters([...characters, person]);
+    
   }
 
 }
